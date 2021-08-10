@@ -1,10 +1,13 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import AuthContext from "../../store/auth-context";
 
 const NavUserDetails = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const authCtx = useContext(AuthContext);
   const router = useRouter();
+
+  const isLoggedIn = authCtx.isLoggedIn;
 
   const loginHandler = () => {
     router.push("/login");
